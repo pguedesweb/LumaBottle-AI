@@ -509,134 +509,245 @@ color:#aab2aa;
 font-size:.8rem;
 }
 
-/* CHATBOT */
+/* CHATBOT — reference-matched assistant panel */
 
 .chatbutton{
-position:fixed;
-bottom:24px;
-right:24px;
-width:58px;
-height:58px;
-border-radius:50%;
-border:0;
-background:#29352c;
-color:white;
-box-shadow:0 10px 30px #0002;
-font-size:1.3rem;
-cursor:pointer;
-z-index:12;
-transition:transform .2s;
+  position:fixed;
+  right:24px;
+  bottom:24px;
+  width:58px;
+  height:58px;
+  border:0;
+  border-radius:50%;
+  background:#29352c;
+  color:#fff;
+  box-shadow:0 10px 30px #0002;
+  font-size:1.35rem;
+  cursor:pointer;
+  z-index:30;
+  transition:transform .2s;
 }
-
-.chatbutton:hover{transform:scale(1.07)}
+.chatbutton:hover{transform:scale(1.06)}
+.chatbutton[hidden]{display:none}
 
 .chatbox{
-position:fixed;
-bottom:92px;
-right:24px;
-width:min(370px,calc(100vw - 40px));
-height:500px;
-max-height:calc(100vh - 120px);
-background:#fff;
-border-radius:24px;
-box-shadow:0 15px 50px #0002;
-z-index:12;
-display:none;
-overflow:hidden;
-flex-direction:column;
+  position:fixed;
+  right:3px;
+  bottom:87px;
+  width:min(400px,calc(100vw - 6px));
+  height:min(616px,calc(100dvh - 88px));
+  min-height:390px;
+  background:#fffdfa;
+  color:#252722;
+  border:1px solid #e5e0d7;
+  border-radius:27px;
+  box-shadow:0 12px 34px #171a1426;
+  z-index:30;
+  display:none;
+  overflow:hidden;
+  flex-direction:column;
+  font-family:"DM Sans",sans-serif;
 }
-
 .chatbox.show{display:flex}
 
 .chathead{
-background:var(--deep);
-color:white;
-padding:18px;
-flex-shrink:0;
+  height:66px;
+  min-height:66px;
+  padding:0 20px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  background:#fffdfa;
+  border-bottom:1px solid #e5e0d7;
+  color:#282b26;
 }
-
+.chatbrandmark{
+  width:36px;
+  height:36px;
+  flex:0 0 36px;
+  display:grid;
+  place-items:center;
+  border-radius:11px;
+  background:#355440;
+  color:#fff;
+  font-size:20px;
+  line-height:1;
+}
+.chatbrandcopy{min-width:0;line-height:1.25}
 .chathead strong{
-font-family:Manrope;
-font-size:1rem;
+  display:block;
+  font-family:"DM Sans",sans-serif;
+  font-size:14px;
+  font-weight:700;
 }
-
-.chatclose{
-float:right;
-cursor:pointer;
-font-size:1.4rem;
-line-height:1;
-}
-
 .chathead .subtitle{
-font-size:.8rem;
-opacity:.7;
-margin-top:5px;
+  margin-top:3px;
+  color:#77736c;
+  font-size:11px;
+  opacity:1;
+}
+.chatclose{
+  margin-left:auto;
+  border:0;
+  padding:5px;
+  background:transparent;
+  color:#77736c;
+  font:400 21px/1 "DM Sans",sans-serif;
+  cursor:pointer;
 }
 
 .chatmessages{
-flex:1;
-padding:18px;
-overflow-y:auto;
-display:flex;
-flex-direction:column;
-gap:12px;
+  flex:1;
+  min-height:0;
+  padding:28px 35px 18px;
+  overflow-y:auto;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:10px;
+  background:#fffdfa;
 }
+.welcome{width:100%;padding-top:0}
+.welcome h3{
+  margin:0 0 7px;
+  color:#252722;
+  font-family:Manrope,sans-serif;
+  font-size:22px;
+  line-height:1.25;
+  letter-spacing:-.045em;
+}
+.welcome h3 em{
+  color:#526b58;
+  font-family:Georgia,serif;
+  font-weight:400;
+}
+.welcome p{
+  margin:0 0 15px;
+  color:#77736c;
+  font-size:14px;
+  line-height:1.48;
+}
+.prompt-list{display:flex;flex-direction:column;align-items:flex-start;gap:8px}
+.prompt-chip{
+  max-width:100%;
+  padding:9px 14px;
+  border:1px solid #e2ddd3;
+  border-radius:999px;
+  background:#f9f7f2;
+  color:#34332f;
+  font:400 13px/1.2 "DM Sans",sans-serif;
+  text-align:left;
+  cursor:pointer;
+  transition:background .18s,border-color .18s;
+}
+.prompt-chip:hover{background:#f0eee7;border-color:#d4cec2}
 
 .botmessage,.usermessage{
-padding:12px 15px;
-border-radius:18px;
-font-size:.9rem;
-line-height:1.6;
-max-width:85%;
-overflow-wrap:anywhere;
+  max-width:88%;
+  padding:11px 14px;
+  border-radius:16px;
+  font-size:13px;
+  line-height:1.55;
+  overflow-wrap:anywhere;
 }
-
 .botmessage{
-background:#f1f3ee;
-color:#29352c;
-align-self:flex-start;
-border-bottom-left-radius:5px;
+  align-self:flex-start;
+  background:#f1f3ee;
+  color:#29352c;
+  border-bottom-left-radius:5px;
 }
-
 .usermessage{
-background:#29352c;
-color:#fff;
-align-self:flex-end;
-border-bottom-right-radius:5px;
+  align-self:flex-end;
+  background:#29352c;
+  color:#fff;
+  border-bottom-right-radius:5px;
 }
-
 .typing{
-font-size:.8rem;
-color:#7b847b;
-padding:4px 12px;
-font-style:italic;
+  padding:4px 2px;
+  color:#7b847b;
+  font-size:12px;
+  font-style:italic;
 }
 
+.chatbottom{
+  flex-shrink:0;
+  padding:12px 13px 12px;
+  border-top:1px solid #e5e0d7;
+  background:#fffdfa;
+}
 .chatinputarea{
-display:flex;
-gap:8px;
-padding:15px;
-border-top:1px solid #eee;
-background:#fff;
-flex-shrink:0;
+  position:relative;
+  display:block;
+  padding:0;
+  border:1px solid #e2ddd3;
+  border-radius:15px;
+  background:#fff;
+  box-shadow:0 1px 3px #0000000a;
 }
-
-.chatinputarea input{
-flex:1;
-min-width:0;
-padding:13px;
-border-radius:13px;
-border:1px solid #ddd;
-font-family:"DM Sans",sans-serif;
-outline:none;
+.chatinputarea textarea{
+  display:block;
+  width:100%;
+  height:98px;
+  min-height:98px;
+  resize:none;
+  border:0;
+  outline:0;
+  border-radius:15px;
+  padding:14px 54px 42px 13px;
+  background:transparent;
+  color:#292b27;
+  font:400 13px/1.45 "DM Sans",sans-serif;
 }
-
-.chatinputarea input:focus{border-color:#9aa993}
-
+.chatinputarea textarea::placeholder{color:#77736c;opacity:1}
+.chatinputarea textarea:focus{box-shadow:inset 0 0 0 1px #b7c2b1}
 .chatinputarea button{
-margin:0;
-padding:12px 17px;
+  position:absolute;
+  right:12px;
+  bottom:12px;
+  width:32px;
+  height:32px;
+  display:grid;
+  place-items:center;
+  margin:0;
+  padding:0;
+  border:0;
+  border-radius:50%;
+  background:#211f1d;
+  color:#fff;
+  font-size:17px;
+  line-height:1;
+  cursor:pointer;
 }
+.chatinputarea button:disabled{opacity:.55;cursor:wait}
+.chatdisclaimer{
+  padding-top:9px;
+  color:#817c73;
+  font-size:10px;
+  line-height:1.2;
+  text-align:center;
+}
+.chatclosepill{
+  position:fixed;
+  right:3px;
+  bottom:10px;
+  z-index:31;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  gap:13px;
+  min-width:107px;
+  height:56px;
+  padding:0 20px;
+  border:0;
+  border-radius:999px;
+  background:#211f1d;
+  color:#fff;
+  font:500 13px "DM Sans",sans-serif;
+  cursor:pointer;
+  box-shadow:0 8px 22px #0002;
+}
+.chatclosepill.show{display:flex}
+.chatclosepill span{font-size:20px;font-weight:300;line-height:1}
 
 .toast{
 position:fixed;
@@ -1013,36 +1124,44 @@ Hydration, beautifully simple.
 </div>
 </footer>
 
-<!-- CHATBOT -->
+<!-- LUMA ASSISTANT -->
+<button class="chatbutton" id="chatbutton" aria-label="Open Luma assistant">Ask LumaBottle</button>
 
-<button class="chatbutton" id="chatbutton" aria-label="Open chat">✦</button>
+<section class="chatbox show" id="chatbox" role="dialog" aria-label="Luma AI product assistant">
+  <header class="chathead">
+    <div class="chatbrandmark" aria-hidden="true">▮</div>
+    <div class="chatbrandcopy">
+      <strong>Luma</strong>
+      <div class="subtitle">AI product assistant</div>
+    </div>
+    <button class="chatclose" id="closechat" aria-label="Close chat">×</button>
+  </header>
 
-<div class="chatbox" id="chatbox">
+  <div class="chatmessages" id="chatmessages" aria-live="polite">
+    <div class="welcome" id="welcome">
+      <h3>Hi, I'm <em>Luma.</em></h3>
+      <p>Ask me anything about LumaBottle — features, colors, shipping or care.</p>
+      <div class="prompt-list">
+        <button class="prompt-chip" type="button">How does the glow reminder work?</button>
+        <button class="prompt-chip" type="button">Is it dishwasher safe?</button>
+        <button class="prompt-chip" type="button">Which color should I pick?</button>
+        <button class="prompt-chip" type="button">Do I need my phone?</button>
+      </div>
+    </div>
+  </div>
 
-<div class="chathead">
-<strong>Luma Concierge</strong>
-<span class="chatclose" id="closechat">×</span>
-<div class="subtitle">Here to help you find your flow.</div>
-</div>
+  <div class="chatbottom">
+    <form class="chatinputarea" id="chatform">
+      <textarea id="chatinput" placeholder="Ask about LumaBottle..." autocomplete="off" aria-label="Ask about LumaBottle"></textarea>
+      <button type="submit" id="chatsend" aria-label="Send message">↵</button>
+    </form>
+    <div class="chatdisclaimer">AI-powered answers · may make mistakes</div>
+  </div>
+</section>
 
-<div class="chatmessages" id="chatmessages">
-<div class="botmessage">
-Hi! I'm your Luma Concierge. Ask me anything about LumaBottle, hydration or finding the right bottle for your routine.
-</div>
-</div>
-
-<div class="chatinputarea">
-<input
-id="chatinput"
-type="text"
-placeholder="Ask a question..."
-autocomplete="off"
-aria-label="Type your message"
->
-<button class="btn" id="chatsend">Send</button>
-</div>
-
-</div>
+<button class="chatclosepill show" id="chatclosepill" type="button">
+  <span aria-hidden="true">×</span> Close
+</button>
 
 <div class="toast" id="toast">Added to cart</div>
 
@@ -1112,168 +1231,112 @@ q.parentElement.classList.toggle('open');
 const chatbox = document.getElementById('chatbox');
 const chatmessages = document.getElementById('chatmessages');
 const chatinput = document.getElementById('chatinput');
+const chatform = document.getElementById('chatform');
 const chatsend = document.getElementById('chatsend');
+const chatbutton = document.getElementById('chatbutton');
+const chatclosepill = document.getElementById('chatclosepill');
+const welcome = document.getElementById('welcome');
 
 let isTyping = false;
 
-
-/* OPEN CHAT */
-
-document.getElementById('chatbutton').addEventListener('click', () => {
-
-chatbox.classList.toggle('show');
-
-if(chatbox.classList.contains('show')){
-chatinput.focus();
+function openChat(){
+  chatbox.classList.add('show');
+  chatclosepill.classList.add('show');
+  chatbutton.hidden = true;
+  chatinput.focus();
 }
-
-});
-
-
-/* CLOSE CHAT */
-
-document.getElementById('closechat').addEventListener('click', () => {
-
-chatbox.classList.remove('show');
-
-});
-
-
-/* ADD MESSAGE TO CHAT */
+function closeChat(){
+  chatbox.classList.remove('show');
+  chatclosepill.classList.remove('show');
+  chatbutton.hidden = false;
+}
+chatbutton.addEventListener('click', openChat);
+document.getElementById('closechat').addEventListener('click', closeChat);
+chatclosepill.addEventListener('click', closeChat);
 
 function addMessage(text, type){
-
-const message = document.createElement('div');
-
-message.className = type === 'user' ? 'usermessage' : 'botmessage';
-
-message.textContent = text;
-
-chatmessages.appendChild(message);
-
-chatmessages.scrollTop = chatmessages.scrollHeight;
-
+  const message = document.createElement('div');
+  message.className = type === 'user' ? 'usermessage' : 'botmessage';
+  message.textContent = text;
+  chatmessages.appendChild(message);
+  chatmessages.scrollTop = chatmessages.scrollHeight;
 }
-
-
-/* BOT RESPONSE SYSTEM */
 
 function getReply(message){
+  const t = message.toLowerCase();
 
-const t = message.toLowerCase();
-
-if(t.includes('battery')){
-return 'LumaBottle is designed for up to 24 hours of typical use. Battery performance can vary depending on how you use it.';
+  if(t.includes('glow') || t.includes('reminder') || t.includes('light')){
+    return 'The gentle glow is a quiet visual nudge to remind you to take a sip. It is designed to bring your attention back to your bottle without a buzz or a phone notification.';
+  }
+  if(t.includes('dishwasher') || t.includes('clean') || t.includes('wash')){
+    return 'For care, remove the smart lid and electronic components and hand-clean them. Follow the care guidance for the bottle body; the concept product details do not confirm that the full bottle is dishwasher safe.';
+  }
+  if(t.includes('phone') || t.includes('bluetooth') || t.includes('connect')){
+    return 'You do not need your phone for the bottle’s glow reminders. Connect to the companion app when you want to review your hydration progress and trends.';
+  }
+  if(t.includes('battery') || t.includes('charge')){
+    return 'LumaBottle is designed for up to 24 hours of typical use. Battery performance can vary depending on settings and how you use it.';
+  }
+  if(t.includes('price') || t.includes('cost') || t.includes('€') || t.includes('buy')){
+    return 'LumaBottle is €59.90 in our concept storefront. You can explore the available finishes in the Product section.';
+  }
+  if(t.includes('track') || t.includes('app') || t.includes('sensor')){
+    return 'Integrated sensors are designed to estimate your intake and sync your progress with the Luma companion app.';
+  }
+  if(t.includes('color') || t.includes('colour') || t.includes('finish') || t.includes('pick')){
+    return 'LumaBottle comes in three finishes: Sage, Midnight Black and Cloud White. Sage has a calm, natural look; Midnight Black is understated; and Cloud White feels clean and minimal.';
+  }
+  if(t.includes('shipping') || t.includes('delivery')){
+    return 'The concept storefront offers free shipping. See the FAQ section for the current concept details about shipping and returns.';
+  }
+  if(t.includes('return') || t.includes('refund')){
+    return 'The concept storefront includes a 30-day return policy. Please see the FAQ section for details.';
+  }
+  if(t.includes('hydration') || t.includes('water') || t.includes('drink')){
+    return 'LumaBottle is designed to make hydration easier to remember with gentle glow reminders and a companion app to review your progress.';
+  }
+  if(t.includes('hello') || t.includes('hi') || t.includes('hey')){
+    return 'Hi! I’m Luma. What would you like to know about LumaBottle? I can help with features, colors, care, battery life and shipping.';
+  }
+  return 'I can help with LumaBottle’s glow reminders, hydration tracking, phone connection, battery life, cleaning, colors and shipping. What would you like to know?';
 }
 
-if(t.includes('dishwasher') || t.includes('clean') || t.includes('wash')){
-return 'The smart lid and electronic components should be removed and hand-cleaned. Follow the care instructions for the bottle body.';
+function sendMessage(textOverride){
+  const messageText = (typeof textOverride === 'string' ? textOverride : chatinput.value).trim();
+  if(!messageText || isTyping) return;
+
+  if(welcome && welcome.isConnected) welcome.remove();
+  addMessage(messageText, 'user');
+  chatinput.value = '';
+  isTyping = true;
+  chatsend.disabled = true;
+
+  const typing = document.createElement('div');
+  typing.className = 'typing';
+  typing.textContent = 'Luma is typing...';
+  chatmessages.appendChild(typing);
+  chatmessages.scrollTop = chatmessages.scrollHeight;
+
+  window.setTimeout(() => {
+    typing.remove();
+    addMessage(getReply(messageText), 'bot');
+    isTyping = false;
+    chatsend.disabled = false;
+    chatinput.focus();
+  }, 550);
 }
 
-if(t.includes('price') || t.includes('cost') || t.includes('€') || t.includes('buy')){
-return 'LumaBottle is €59.90 in our concept storefront. You can find the available finishes in the Product section.';
-}
-
-if(t.includes('track') || t.includes('app') || t.includes('sensor')){
-return 'LumaBottle uses integrated sensors to estimate your intake and sync your progress with the companion app in this concept product.';
-}
-
-if(t.includes('color') || t.includes('colour') || t.includes('finish')){
-return 'LumaBottle comes in three finishes: Sage, Midnight Black and Cloud White. You can explore them in the Product section.';
-}
-
-if(t.includes('shipping') || t.includes('delivery')){
-return 'Our concept storefront offers free shipping. Check the FAQ section for more information about shipping and returns.';
-}
-
-if(t.includes('return') || t.includes('refund')){
-return 'Our concept storefront includes a 30-day return policy. Please see the FAQ section for details.';
-}
-
-if(t.includes('hydration') || t.includes('water') || t.includes('drink')){
-return 'Staying hydrated throughout the day can be easier with small, consistent habits. LumaBottle is designed to help you remember to take a sip with gentle glow reminders.';
-}
-
-if(t.includes('hello') || t.includes('hi ') || t === 'hi' || t.includes('hey')){
-return 'Hi! What would you like to know about LumaBottle? I can help with product features, pricing, cleaning, battery life and more.';
-}
-
-return 'I can help with LumaBottle features, hydration tracking, battery life, cleaning, pricing, finishes and shipping. What would you like to know?';
-
-}
-
-
-/* SEND MESSAGE */
-
-function sendMessage(){
-
-const text = chatinput.value.trim();
-
-if(!text || isTyping) return;
-
-addMessage(text, 'user');
-
-chatinput.value = '';
-
-isTyping = true;
-chatsend.disabled = true;
-
-const typing = document.createElement('div');
-
-typing.className = 'typing';
-typing.textContent = 'Luma is typing...';
-
-chatmessages.appendChild(typing);
-
-chatmessages.scrollTop = chatmessages.scrollHeight;
-
-setTimeout(() => {
-
-typing.remove();
-
-const reply = getReply(text);
-
-addMessage(reply, 'bot');
-
-isTyping = false;
-chatsend.disabled = false;
-
-chatinput.focus();
-
-}, 700);
-
-}
-
-
-/* SEND BUTTON */
-
-chatsend.addEventListener('click', sendMessage);
-
-
-/* ENTER KEY */
-
-chatinput.addEventListener('keydown', (e) => {
-
-if(e.key === 'Enter'){
-e.preventDefault();
-sendMessage();
-}
-
+chatform.addEventListener('submit', (event) => {
+  event.preventDefault();
+  sendMessage();
 });
 
-
-/* FRESH CONVERSATION ON EVERY PAGE VISIT */
-
-window.addEventListener('DOMContentLoaded', () => {
-
-chatmessages.innerHTML = '';
-
-addMessage(
-"Hi! I'm your Luma Concierge. Ask me anything about LumaBottle, hydration or finding the right bottle for your routine.",
-'bot'
-);
-
+document.querySelectorAll('.prompt-chip').forEach((prompt) => {
+  prompt.addEventListener('click', () => sendMessage(prompt.textContent));
 });
+
+/* The reference opens with the welcome screen visible. */
+openChat();
 
 </script>
 
