@@ -431,6 +431,7 @@ function sendChat(event) {
   input.value = '';
   quickAsk(question);
 }
+  function setColor(name, el) {document.getElementById('colorName').textContent = name; document.querySelectorAll('.swatch').forEach(x => x.classList.remove('active')); el.classList.add('active'); const bottle = document.querySelector('.product-visual .bottle'); bottle.style.background = name === 'Midnight Black' ? 'linear-gradient(90deg,#222b29,#525c56,#171f1d)' : name === 'Cloud White' ? 'linear-gradient(90deg,#d2d0c3,#fffdf1,#d2d0c3)' : 'linear-gradient(90deg,#718875,#b2c2ad 23%,#9eaf9b 75%,#657d6b)'}
 </script>
 
 <script>
