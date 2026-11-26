@@ -329,7 +329,7 @@ section { padding: 112px 0; }
 <button class="chat-launch" onclick="toggleChat()">Ask Luma ✦</button>
 <div class="chat" id="chat"><div class="chat-head"><b>Luma · Product assistant</b><button style="border:0;background:none;font-size:1.2rem" onclick="toggleChat()">×</button></div><div class="chat-body" id="chatBody" aria-live="polite"><p>Hi, I'm Luma. Ask me anything about LumaBottle — features, colors, shipping or care.</p><button type="button" class="btn light" style="padding:7px 12px;margin:3px" onclick="quickAsk('How does the glow reminder work?')">How does the glow work?</button><button type="button" class="btn light" style="padding:7px 12px;margin:3px" onclick="quickAsk('Is it dishwasher safe?')">Dishwasher safe?</button><button type="button" class="btn light" style="padding:7px 12px;margin:3px" onclick="quickAsk('Do I need my phone?')">Do I need my phone?</button></div><form class="chat-input" onsubmit="sendChat(event)"><input id="chatInput" placeholder="Ask me anything…" autocomplete="off"><button type="submit">Send</button></form></div>
 <script>
-const LUMA_WEBHOOK_URL = "https://pguedes10.app.n8n.cloud/webhook-test/lumabottle";
+const LUMA_WEBHOOK_URL = "https://pguedes10.app.n8n.cloud/webhook/lumabottle";
 const LUMA_SESSION_ID = (typeof crypto !== "undefined" && crypto.randomUUID)
   ? crypto.randomUUID()
   : "luma-" + Date.now() + "-" + Math.random().toString(36).slice(2);
